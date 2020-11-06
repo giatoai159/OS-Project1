@@ -37,7 +37,7 @@ bool cdHandling(char *path)
         int position = 0;
         while(argv[position] != NULL)
         {
-            if (chdir(argv[position]) != NULL)
+            if (chdir(argv[position]) != 0)
             {
                 fprintf(stderr, "Can't find the path to %s.\n", argv[position]);
                 return 1;
@@ -128,4 +128,36 @@ bool handlingRedirectionOutput(char* line)
 		return 1;
 	}
 	return 1;
-}	
+}
+bool handlingRedirectionInput(char* line)
+{
+	char* command = strtok_r(line,"<", &line);
+	char* file_name = strtok_r(line," ", &line);
+	char **argvs = splitLine(command);
+	int save_stdin = dup(STDIN_FILENO);
+	pid_t pid = fork();
+	if (pid < 0)
+	{
+		fprintf(stderr, "Can't create child process");
+		return 1;
+	}
+	else if (pid == 0)
+	{
+		int file_des = open(file_name,O_RDONLY);
+		if (file_des < 0)
+		{
+			fprintf(stderr, "Can't create/open the file.\n");
+			exit(EXIT_FAILURE);
+		}
+		dup2(file_des,STDIN_FILENO);
+		execvp(argvs[0],argvs);
+	}
+	else
+	{
+		dup2(save_stdin,STDIN_FILENO);
+		wait(NULL);
+		free(argvs);
+		return 1;
+	}
+	return 1;
+}

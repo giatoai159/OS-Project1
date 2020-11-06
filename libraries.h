@@ -18,6 +18,7 @@ bool launch(char* line, char** cmdHistory, int numHistory);
 bool normalHandling(char* line);
 bool cdHandling(char* path);
 bool handlingRedirectionOutput(char* line);
+bool handlingRedirectionInput(char* line);
 // void childSignalHandler(int signum); // FIX
 // bool ampersandHandling(char* line); // FIX
 // UTILITIES
@@ -27,6 +28,7 @@ int checkState(char* line);
 char **splitCommand(char* line);
 char **splitPath(char* path);
 int char2int(const char* ch);
+char** splitLine(char* line);
 // HISTORY
 void showHistory(char** cmdHistory, int numHistory);
 char** appendHistory(char* line, int* numHistory);

@@ -141,3 +141,51 @@ int char2int(const char* ch)
     }
     return temp;
 }
+char** splitLine(char* line)
+{
+
+	int buffsize = 64;
+	int possition = 0;
+	char** args = (char**)malloc(buffsize * sizeof(char*));
+	char* arg;
+	if (args == NULL)
+	{
+		fprintf(stderr, "Allocation error");
+		printf("\n");
+		exit(EXIT_FAILURE);
+	}
+
+	int check_quoration = 0;
+	if (line[0] == '\"')
+		check_quoration = 1;
+	else
+		arg = strtok_r(line, " \"\t\r\n\a" ,&line);
+	while (arg != NULL)
+	{
+		if (check_quoration == 1)
+		{
+				memmove(line,line + 1,strlen(line));
+				check_quoration = 0;
+				arg = strtok_r(line,"\"",&line);
+		}
+		args[possition] = arg;
+		possition++;	
+		if (possition >= buffsize)
+		{
+			buffsize += 64;
+			args = (char**)realloc(args, buffsize * sizeof(char*));
+			if (args == NULL)
+			{
+				fprintf(stderr, "Allocation error");
+				printf("\n");
+				exit(EXIT_FAILURE);
+			}
+		}
+		if (line[0] == '\"')
+			check_quoration = 1;
+		else
+			arg = strtok_r(line, " \"\t\r\n\a" ,&line);
+	}
+	args[possition] = NULL;
+	return args;
+}

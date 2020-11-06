@@ -12,7 +12,7 @@ bool exec(char* line)
         //return pipe_handling(line);
     else if (state == 3)
         return handlingRedirectionOutput(line);
-    //else return handling_redirection_input(line);
+    else return handlingRedirectionInput(line);
     return 1;
 }
 
