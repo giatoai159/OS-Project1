@@ -8,7 +8,7 @@ bool exec(char* line)
         return normalHandling(line);
     //else if (state == 1)
         //return ampersandHandling(line);
-    //else if (state == 3)
+    //else if (state == 2)
         //return pipe_handling(line);
     else if (state == 3)
         return handlingRedirectionOutput(line);
