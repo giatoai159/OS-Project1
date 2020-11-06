@@ -12,11 +12,14 @@
 #define HISTORY_SIZE 100
 
 // SHELL
-bool exec(char* line,char** cmdHistory, int numHistory);
+bool exec(char* line);
 bool launch(char* line, char** cmdHistory, int numHistory);
 // BUILT-IN COMMANDS
 bool normalHandling(char* line);
-bool cdHandling(char *path);
+bool cdHandling(char* path);
+bool handlingRedirectionOutput(char* line);
+// void childSignalHandler(int signum); // FIX
+// bool ampersandHandling(char* line); // FIX
 // UTILITIES
 char* clearWhiteSpaces(char* str);
 void readLine(char* line);

@@ -37,4 +37,15 @@ int main()
     freeHistory(cmdHistory, numHistory);
 
     printf("\n");
-}
+}istory(cmdHistory, numHistory);
+            return 1;
+        }
+    else return exec(line);
+}handling.c
+history.c
+libraries.h
+main
+main.c
+out.txt
+shell.c
+utilities.c

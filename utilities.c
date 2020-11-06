@@ -26,18 +26,18 @@ int checkState(char* line)
     int length = strlen(line);
     
     if (line[length - 1] == '&')
-        return 2;
+        return 1;
     else
     {
         const char* temp = strchr(line, '|');
         if (temp != NULL)
-            return 3;
+            return 2;
         temp = strchr(line, '>');
         if (temp != NULL)
-            return 4;
+            return 3;
         temp = strchr(line, '<');
         if (temp != NULL)
-            return 5;
+            return 4;
     }
     return 0;
 }

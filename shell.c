@@ -1,16 +1,17 @@
 #include "libraries.h"
 
-bool exec(char* line,char** cmdHistory, int numHistory)
+bool exec(char* line)
 {
     int state = checkState(line);
+    // printf("%d",state); // DEBUG
     if (state == 0)
         return normalHandling(line);
-    //else if (state == 2)
-        //return ampersand_handling(line);
+    //else if (state == 1)
+        //return ampersandHandling(line);
     //else if (state == 3)
         //return pipe_handling(line);
-    //else if (state == 4)
-        //return handling_redirection_output(line);
+    else if (state == 3)
+        return handlingRedirectionOutput(line);
     //else return handling_redirection_input(line);
     return 1;
 }
@@ -36,5 +37,5 @@ bool launch(char* line, char** cmdHistory, int numHistory)
             showHistory(cmdHistory, numHistory);
             return 1;
         }
-    else return exec(line, cmdHistory, numHistory);
+    else return exec(line);
 }
