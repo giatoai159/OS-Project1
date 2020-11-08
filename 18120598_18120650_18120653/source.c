@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
         else if (strcmp(args[0], "!!") == 0 && numbersArgs == 1) {
             // Check buffer
             if (IsHistoryFull == 1) {
-                printf("The command in history is : %s\n", history);
+                printf("Previous command: %s", history);
                 strcpy(copyOfInput, history);
 
 
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
                 parse(copyOfInput, args, &numbersArgs);
             }
             else {
-                printf("No command in history\n");
+                printf("Don't have command before\n");
                 continue;
             }
         }

@@ -1,0 +1,9 @@
+total 48
+-rw------- 1 henryktvn henryktvn  1071 Nov  8 03:02 function.c
+-rw------- 1 henryktvn henryktvn   429 Nov  8 03:02 library.h
+-rw------- 1 henryktvn henryktvn    16 Nov  8 03:45 number.txt
+-rw------- 1 henryktvn henryktvn     0 Nov  8 03:45 out.txt
+-rwxrwxr-x 1 henryktvn henryktvn 17584 Nov  8 04:19 shell
+-rw------- 1 henryktvn henryktvn  6678 Nov  8 04:12 source.c
+-rw------- 1 henryktvn henryktvn    24 Nov  8 03:46 test1.txt
+-rw------- 1 henryktvn henryktvn    13 Nov  8 03:47 test2.txt
